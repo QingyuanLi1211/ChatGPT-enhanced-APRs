@@ -8,8 +8,8 @@
 - [License](#license)
 
 ## Introduction
-![image](overview.png)
-
+![overview](overview.png)
+*Figure 1: The overview of our empirical study.*
 ### RQ1: Generalizability
 In this section, we focus on the performance of self-enhanced APR tools under three benchmarks by using the debugger(static or dynamic), extracting error messages, and trigger tests. And gain patches in two settings: (1) with intrinsic information and (2) with extrinsic information. 
 ### RQ2: Memorization
@@ -33,18 +33,12 @@ BugsInPy: https://github.com/JohnnyPeng18/TypeFix
 ## Usage
 ### RQ1: Generalizability
 #### 1. Refined Test Report Prompt
-Step1. Repair Prompt
+We have refined the TRP work, and the current workflow is as follows: Step 1, fix the code. Step 2, generate a test report based on the revised code. Step 3, revise the code again based on the generated test report. The relevant prompt information can be accessed in path `/APRs/TRP/trp_consists.py`. And relevant code script can be accessed in path `/APRs/TRP/RefinedTRP.py`.  
+Example usage:
 ```bash
-python -m gptcode.cli repair --ds dataset_name --lang code_language
+python /APRs/TRP/RefinedTRP.py -out fixed_code.json -code buggy_code.json -api YOUR_API_KEY -model gpt-3.5-turbo-0125 -lang Python
 ```
-Step2. Test Report Prompt
-```bash
-python -m gptcode.cli ask_repair --ds dataset_name --lang code_language
-```
-Step3. Refined Prompt
-```bash
-python -m gptcode.cli ask_repair --ds dataset_name --lang code_language 
-```
+
 #### 2. FixAgent
 
 We use the default settings for FixAgent. There are three agents used: fixer (fix the actual code), analyzer (reasoning the code), and localizer (localize the wrong code).
@@ -81,8 +75,10 @@ python evaluate_bip.py -pat {patches json file generated in former steps} -out {
 ```
 
 ## Results
-
-
+![result table1](result_table1.png)
+*Table 1: Number of fixed defects and enhancement rations of the base LLM and LLM-based self-enhancing APRs on three benchmarks.*
+![result_table2](result_table1.png)
+*Table 2: NFD and ERS of the base LLM and intrinsic LLM-based self-enhancing APRs on memorization-decayed Defects4J.*
 
 ## Contributing
 If you would like to contribute to the project, please open an issue or submit a pull request.
