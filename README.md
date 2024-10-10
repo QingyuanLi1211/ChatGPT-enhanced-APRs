@@ -57,9 +57,12 @@ The same settings as SRepair, Comment/Buggy Code, Trigger Test, and Error messag
 You can use the functions complete_function_and_perplexity and sliding_window_clone_detection to calculate ATCC, ATCH, AP, and RAP for any benchmarks, or you can just use the function calculate_bugsinpy(), calculate_d4j_all(), calculate_humanevaljava() to calculate ATCC, ATCH, AP, and RAP for the three benchmarks. All these functions are in the script RQ2/RQ2.py.
 
 ### RQ3: Impact of Memorization
+
 #### RQ3-1: Reducing memorization
-To use JavaTransformer, you need to change your data format to .java file. After that, you can transform Defects4J with JavaTransformer (using mutation operators VR, RC, and US). Note that JavaTransformer can only receive function-level code snippets, so you need to extract the buggy function from Defects4J. When finishing the transformation, you can fix these bugs exactly the way you experimented with RQ1.  
-#### RQ3-1: Increasing memorization
+To use JavaTransformer, you need to change your data format to a Java file (you can use the function write_d4j1_2java in RQ31/RQ3_1.py to change the format or re-implementation this feature). After that, you can transform Defects4J with JavaTransformer (using mutation operators VR, RC, and US). Note that JavaTransformer can only receive function-level code snippets, so you need to extract the buggy function from Defects4J. When finishing the transformation, you can fix these bugs exactly the way you experimented with RQ1.  
+
+#### RQ3-2: Increasing memorization
+Use the model in RQ32/finetuned_model to re-fix the BugsInPy (54 bugs). In fact, you can also fine-tune gpt-3.5-turbo-0125 yourself using BIP4sft, and we will be releasing BIP4sft dataset soon. We do not provide a script for fine-tuning GPT because OpenAI provides a very convenient web-side fine-tuning method; see https://platform.openai.com/finetune for more details.
 
 ### Evaluate Datasets
 
