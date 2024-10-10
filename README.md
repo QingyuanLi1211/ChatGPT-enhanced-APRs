@@ -11,13 +11,13 @@
 ![image](overview.png)
 
 ### RQ1: Generalizability
-In this section, we focus on performance of self-enhanced APR tools under 3 benchamarks. By using debugger(static or dynamic), extracting error message and trigger test. And gain patches in two settings: (1) with intrinsic information, (2) with extrinsic information. 
+In this section, we focus on the performance of self-enhanced APR tools under three benchmarks by using the debugger(static or dynamic), extracting error messages, and trigger tests. And gain patches in two settings: (1) with intrinsic information and (2) with extrinsic information. 
 ### RQ2: Memorization
-
+In this section, we verified the memorization level of base LLM (gpt-3.5-turbo-0125) on three benchmarks (i.e., Defects4J, HumanEval-Java, and BugsInPy), and we used four metrics as ATCC, ATCH, AP, and RAP.
 ### RQ3: Impact of Memorization 
-RQ3-1: To explore how can APRs tools behave on transformed contexts(reduce memory level),  repair process is replayed on trasformation of Defects4J code. 
+RQ3-1: To explore how APR tools can behave in transformed contexts(reduce memorization level), the repair process is replayed on the transformation of Defects4J code. 
 
-RQ3-2: To Introduce the knowledge about BugsInPy to LLM, we finetune LLM with BugsInPy code and replay the repiar process. The number of patches generated is expected to be related to the level of memory.
+RQ3-2: To Introduce the knowledge about BugsInPy to LLM, we finetune LLM with BugsInPy code and replay the repair process. The number of patches generated is expected to be related to the level of memorization.
 
 ## Installation
 In the paper, we refer to the relevant work of an article from the APR journal. The content involved is extensive, and the related environmental configuration information can be found in the `/APRS` directory.
@@ -47,11 +47,19 @@ python -m gptcode.cli ask_repair --ds dataset_name --lang code_language
 ```
 #### 2. FixAgent
 
-We use the defualt settings for FixAgent. There are three agents useed: fixer (fix the actual code), analyzer (reasoning the code), localizer (localize the wrong code).
+We use the default settings for FixAgent. There are three agents used: fixer (fix the actual code), analyzer (reasoning the code), and localizer (localize the wrong code).
 
 #### 3. SRepair
 
-Same settings as SRepair, Comment/Buggy Code, Trigger Test and Error message are extracted from datasets, which is leveraged to from Repair Suggestions. In last step, Generation model are requested to fix code.
+The same settings as SRepair, Comment/Buggy Code, Trigger Test, and Error message are extracted from datasets, which are leveraged from Repair Suggestions. In the last step, the Generation model is requested to fix the code.
+
+### RQ2: Memorization
+You can use the functions complete_function_and_perplexity and sliding_window_clone_detection to calculate ATCC, ATCH, AP, and RAP for any benchmarks, or you can just use the function calculate_bugsinpy(), calculate_d4j_all(), calculate_humanevaljava() to calculate ATCC, ATCH, AP, and RAP for the three benchmarks. All these functions are in the script RQ2/RQ2.py.
+
+### RQ3: Impact of Memorization
+#### RQ3-1: Reducing memorization
+To use JavaTransformer, you need to change your data format to .java file. After that, you can transform Defects4J with JavaTransformer (using mutation operators VR, RC, and US). Note that JavaTransformer can only receive function-level code snippets, so you need to extract the buggy function from Defects4J. When finishing the transformation, you can fix these bugs exactly the way you experimented with RQ1.  
+#### RQ3-1: Increasing memorization
 
 ### Evaluate Datasets
 
