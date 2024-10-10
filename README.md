@@ -47,16 +47,16 @@ Same settings as SRepair, Comment/Buggy Code, Trigger Test and Error message are
 
 #### (1) Evaluate Defects4J
 ```
-Python evaluate_d4j.py -loc {location of buggy function place} -out {eval result json} -pat {patches json file generated in former steps} -tmp {temp folder to hold env}
+python evaluate_d4j.py -loc {location of buggy function place} -out {eval result json} -pat {patches json file generated in former steps} -tmp {temp folder to hold env}
 ```
 #### (2) Evaluate HumanEval
 ```
-Python evaluate_hej.py -pat {patches json file generated in former steps} -human_eval_dir {human eval datatset folder} -result {file to store eval result}
+python evaluate_hej.py -pat {patches json file generated in former steps} -human_eval_dir {human eval datatset folder} -result {file to store eval result}
 ```
 
 ### (3) Evaluate BugsInPy
 ```
-Python evaluate_bip.py -pat {patches json file generated in former steps} -out {out file to store result} -bip_folder {folder to hold BugsInPy environment} -loc {location file that indicates fault location in code}
+python evaluate_bip.py -pat {patches json file generated in former steps} -out {out file to store result} -bip_folder {folder to hold BugsInPy environment} -loc {location file that indicates fault location in code}
 ```
 
 ## Results
