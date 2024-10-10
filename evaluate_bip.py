@@ -2,15 +2,23 @@ import re
 import json
 import os
 import subprocess
+import argparse
 
 location_dict = {}
 to_be_evaled = {}
 
-eval_data = ""
-location_path = ""
-test_root = ""
-test_result_root = ''
-repo_duc = ''
+parser = argparse.ArgumentParser(description='Make Eval')
+parser.add_argument('-loc', type=str, help='location of buggy function place')
+parser.add_argument('-out', type=str, help='out put json path')
+parser.add_argument('-pat', type=str, help='patches json path')
+parser.add_argument('-bip_folder', type=str)
+args = parser.parse_args()
+
+eval_data = args.pat
+location_path = args.loc
+test_root = args.bip_folder
+test_result_root = args.out
+
 
 with open(location_path, 'r') as f:
     location_dict = json.load(f)

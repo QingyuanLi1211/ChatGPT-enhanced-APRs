@@ -3,6 +3,7 @@ import os
 import json
 import jsonlines
 import os
+import argparse
 from sympy import false
 import sys
 sys.path.append('main')
@@ -273,14 +274,16 @@ class Prompt:
     def feedback(self, code):
         with open(os.path.join(self.main_dir, 'src/main/java/humaneval/buggy', self.bug_id + '.java'), 'w') as f:
             f.write(code)
- 
 
-test_human_eval_dir = ''
-w_human_eval_json = ''
-o_human_eval_json = ''
-result_txt = ''
-srepair_eval_json = ''
-baseline_human_eval_json = ''
+parser = argparse.ArgumentParser(description='Make Eval')
+parser.add_argument('-pat', type=str, help='patches generated')
+parser.add_argument('-human_eval_dir', type=str, help='folder for human eval')
+parser.add_argument('-result', type=str, help='output result')
+args = parser.parse_args()
+
+test_human_eval_dir = args.human_eval_dir
+result_txt = args.result
+srepair_eval_json = args.pat
 
 js  = []
 

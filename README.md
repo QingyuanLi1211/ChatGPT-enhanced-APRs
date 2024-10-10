@@ -27,18 +27,40 @@ Step1. Repair Prompt
 ```bash
 python -m gptcode.cli repair --ds dataset_name --lang code_language
 ```
-Step2. Test Report Prompe
+Step2. Test Report Prompt
 ```bash
 python -m gptcode.cli ask_repair --ds dataset_name --lang code_language
 ```
-Step3. Refined prompt
+Step3. Refined Prompt
 ```bash
 python -m gptcode.cli ask_repair --ds dataset_name --lang code_language 
 ```
+### 2. FixAgent
 
+We use the defualt settings for FixAgent. There are three agents useed: fixer (fix the actual code), analyzer (reasoning the code), localizer (localize the wrong code).
 
+### 3. SRepair
+
+Same settings as SRepair, Comment/Buggy Code, Trigger Test and Error message are extracted from datasets, which is leveraged to from Repair Suggestions. In last step, Generation model are requested to fix code.
+
+### 4. Evaluate Datasets
+
+#### (1) Evaluate Defects4J
+```
+Python evaluate_d4j.py -loc {location of buggy function place} -out {eval result json} -pat {patches json file generated in former steps} -tmp {temp folder to hold env}
+```
+#### (2) Evaluate HumanEval
+```
+Python evaluate_hej.py -pat {patches json file generated in former steps} -human_eval_dir {human eval datatset folder} -result {file to store eval result}
+```
+
+### (3) Evaluate BugsInPy
+```
+Python evaluate_bip.py -pat {patches json file generated in former steps} -out {out file to store result} -bip_folder {folder to hold BugsInPy environment} -loc {location file that indicates fault location in code}
+```
 
 ## Results
+
 
 
 ## Contributing
