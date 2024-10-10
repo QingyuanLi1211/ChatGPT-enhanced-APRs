@@ -10,6 +10,15 @@
 ## Introduction
 ![image](overview.png)
 
+### RQ1: Generalizability
+In this section, we focus on performance of self-enhanced APR tools under 3 benchamarks. By using debugger(static or dynamic), extracting error message and trigger test. And gain patches in two settings: (1) with intrinsic information, (2) with extrinsic information. 
+### RQ2: Memorization
+
+### RQ3: Impact of Memorization 
+RQ3-1: To explore how can APRs tools behave on transformed contexts(reduce memory level),  repair process is replayed on trasformation of Defects4J code. 
+
+RQ3-2: To Introduce the knowledge about BugsInPy to LLM, we finetune LLM with BugsInPy code and replay the repiar process. The number of patches generated is expected to be related to the level of memory.
+
 ## Installation
 In the paper, we refer to the relevant work of an article from the APR journal. The content involved is extensive, and the related environmental configuration information can be found in the `/APRS` directory.
 
