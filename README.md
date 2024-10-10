@@ -31,7 +31,8 @@ BugsInPy: https://github.com/JohnnyPeng18/TypeFix
 
 
 ## Usage
-### 1. Refined Test Report Prompt
+### RQ1: Generalizability
+#### 1. Refined Test Report Prompt
 Step1. Repair Prompt
 ```bash
 python -m gptcode.cli repair --ds dataset_name --lang code_language
@@ -44,15 +45,15 @@ Step3. Refined Prompt
 ```bash
 python -m gptcode.cli ask_repair --ds dataset_name --lang code_language 
 ```
-### 2. FixAgent
+#### 2. FixAgent
 
 We use the defualt settings for FixAgent. There are three agents useed: fixer (fix the actual code), analyzer (reasoning the code), localizer (localize the wrong code).
 
-### 3. SRepair
+#### 3. SRepair
 
 Same settings as SRepair, Comment/Buggy Code, Trigger Test and Error message are extracted from datasets, which is leveraged to from Repair Suggestions. In last step, Generation model are requested to fix code.
 
-### 4. Evaluate Datasets
+### Evaluate Datasets
 
 #### (1) Evaluate Defects4J
 ```
