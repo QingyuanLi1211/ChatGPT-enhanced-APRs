@@ -35,7 +35,7 @@ BugsInPy: https://github.com/JohnnyPeng18/TypeFix
 #### 1. Refined Test Report Prompt
 We have refined the TRP work, and the current workflow is as follows: Step 1, fix the code. Step 2, generate a test report based on the revised code. Step 3, revise the code again based on the generated test report. The relevant prompt information can be accessed in path `/APRs/TRP/trp_consists.py`. And relevant code script can be accessed in path `/APRs/TRP/RefinedTRP.py`.  
   
-Example usage:
+**Example usage**
 ```bash
 python /APRs/TRP/RefinedTRP.py -out fixed_code.json -code buggy_code.json -api YOUR_API_KEY -model gpt-3.5-turbo-0125 -lang Python
 ```
