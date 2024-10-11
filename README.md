@@ -78,8 +78,8 @@ python evaluate_bip.py -pat {patches json file generated in former steps} -out {
 ## Results
 ![result table1](result_table1.png)
 *Table 1: Number of fixed defects and enhancement rations of the base LLM and LLM-based self-enhancing APRs on three benchmarks.*
-![result_table2](result_table1.png)
-*Table 2: NFD and ERS of the base LLM and intrinsic LLM-based self-enhancing APRs on memorization-decayed Defects4J.*
+![result_table2](result_table2.png)
+*Table 2: NFD and ERS of the base LLM and Intrinsic LLM-based self-enhancing APRs on memorization-decayed Defects4J.*
 
 ## Contributing
 If you would like to contribute to the project, please open an issue or submit a pull request.
